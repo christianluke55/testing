@@ -3,92 +3,122 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>YourStartup</title>
-  <meta name="description" content="A student startup prototype for BSAD 281.">
+  <meta name="theme-color" content="#073b3a">
+  <title>Blue Hour Club | An ocean-side game room</title>
+  <meta name="description" content="Swim the blue hour, play a hand of blackjack, and try the slot machine. Just for fun, with pretend credits.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-  <!-- =========================================================
-       HEADER: logo text + navigation.
-       Each link points to a "view" further down the page (#home, #explore, #about).
-       ========================================================= -->
   <header class="site-header">
-    <a class="brand" href="#home" id="brand-name">YourStartup</a>
-    <nav aria-label="Main">
-      <a href="#home">Home</a>
-      <a href="#explore">Explore</a>
-      <a href="#about">About</a>
-    </nav>
+    <a class="brand" href="#home" aria-label="Blue Hour Club home">
+      <span class="brand-mark" aria-hidden="true">BH</span>
+      <span>BLUE HOUR <span class="brand-light">CLUB</span></span>
+    </a>
+    <p class="header-note">SALT AIR. GOOD CARDS. NO REAL STAKES.</p>
+    <div class="wallet" aria-label="Your pretend credit balance">
+      <span class="wallet-label">YOUR CREDITS</span>
+      <span class="wallet-total"><span aria-hidden="true">✳</span> <span id="credits-display">500</span></span>
+    </div>
   </header>
 
-  <main>
-
-    <!-- =======================================================
-         VIEW 1: HOME — what you do, for whom, and why it matters.
-         ======================================================= -->
-    <section id="home" data-view>
-      <div class="hero">
-        <p class="eyebrow">Prototype</p>
-        <h1 id="tagline">One sentence that says what your startup does.</h1>
-        <p class="lead" id="pitch">
-          Who is your customer, what problem do they have, and why is your
-          solution better than what they use today?
-        </p>
-        <a class="button" href="#explore">See it in action</a>
-      </div>
-
-      <div class="steps">
-        <div class="card">
-          <h2>1. Step one</h2>
-          <p>Describe the first thing a customer does.</p>
+  <main id="home">
+    <div class="experience-grid">
+      <section class="game-panel blackjack-panel" aria-labelledby="blackjack-title">
+        <div class="panel-heading">
+          <div>
+            <p class="panel-kicker">TABLE ONE <span>·</span> BLACKJACK</p>
+            <h1 id="blackjack-title">The card room</h1>
+          </div>
+          <span class="table-number" aria-hidden="true">01</span>
         </div>
-        <div class="card">
-          <h2>2. Step two</h2>
-          <p>Describe what happens next.</p>
+
+        <div class="table-felt">
+          <div class="hand-block">
+            <div class="hand-label"><span>DEALER</span><span id="dealer-score">–</span></div>
+            <div class="card-hand" id="dealer-hand" aria-label="Dealer's cards"></div>
+          </div>
+          <div class="felt-rule"><span>BLACKJACK PAYS 3:2</span></div>
+          <div class="hand-block">
+            <div class="hand-label"><span>YOU</span><span id="player-score">–</span></div>
+            <div class="card-hand" id="player-hand" aria-label="Your cards"></div>
+          </div>
         </div>
-        <div class="card">
-          <h2>3. Step three</h2>
-          <p>Describe the result the customer gets.</p>
+
+        <div class="bet-row">
+          <span class="control-label">YOUR BET</span>
+          <div class="bet-options" role="group" aria-label="Choose blackjack bet">
+            <button type="button" class="bet-option" data-blackjack-bet="20" aria-pressed="false">20</button>
+            <button type="button" class="bet-option is-selected" data-blackjack-bet="40" aria-pressed="true">40</button>
+            <button type="button" class="bet-option" data-blackjack-bet="60" aria-pressed="false">60</button>
+          </div>
         </div>
-      </div>
-    </section>
+        <div class="table-actions">
+          <button type="button" class="button button-primary" id="deal-button">Deal cards</button>
+          <button type="button" class="button button-dark" id="hit-button" disabled>Hit</button>
+          <button type="button" class="button button-dark" id="stand-button" disabled>Stand</button>
+        </div>
+        <p class="game-message" id="blackjack-message" aria-live="polite">Pick a bet and take a seat.</p>
+      </section>
 
-    <!-- =======================================================
-         VIEW 2: EXPLORE — a list built from the fake data in data.js.
-         ======================================================= -->
-    <section id="explore" data-view hidden>
-      <h1>Explore</h1>
-      <p class="muted">These examples are fake. They come from <code>data.js</code>.</p>
+      <figure class="ocean-scene" aria-labelledby="scene-title">
+        <canvas id="ocean-canvas" aria-hidden="true"></canvas>
+        <div class="scene-topline">
+          <span class="live-indicator"><span></span> LIVE FROM THE REEF</span>
+          <span class="coordinates">16° 51′ N &nbsp; 88° 04′ W</span>
+        </div>
+        <div class="scene-caption">
+          <p class="scene-eyebrow">THE WATER'S JUST RIGHT</p>
+          <h2 id="scene-title">A little deeper.<br>A little luckier.</h2>
+          <p class="scene-subtitle">Your own blue-hour hideaway.</p>
+        </div>
+        <div class="scene-footer">
+          <span><span class="scene-dot swimmer-dot"></span> YOU, OUT THERE</span>
+          <span><span class="scene-dot shark-dot"></span> REEF SHARKS, PASSING THROUGH</span>
+        </div>
+        <figcaption class="visually-hidden">An animated view below the sea: a swimmer floats beside gently moving reef sharks.</figcaption>
+      </figure>
 
-      <label class="search">
-        <span>Search</span>
-        <input type="search" id="search-box" placeholder="Type to filter…">
-      </label>
+      <section class="game-panel slots-panel" aria-labelledby="slots-title">
+        <div class="panel-heading">
+          <div>
+            <p class="panel-kicker">MACHINE TWO <span>·</span> SLOTS</p>
+            <h2 id="slots-title">The tide turner</h2>
+          </div>
+          <span class="table-number" aria-hidden="true">02</span>
+        </div>
 
-      <p class="muted" id="saved-count"></p>
-      <div class="grid" id="listing-grid"></div>
-      <p class="empty" id="empty-message" hidden>Nothing matches your search.</p>
-    </section>
+        <div class="slot-machine">
+          <div class="slot-marquee"><span>★</span> LUCK FAVORS THE TIDAL <span>★</span></div>
+          <div class="slot-reels" aria-label="Slot machine reels">
+            <div class="slot-reel" id="reel-one">🐚</div>
+            <div class="slot-reel" id="reel-two">🌊</div>
+            <div class="slot-reel" id="reel-three">🪸</div>
+          </div>
+          <p class="slot-payline"><span>—</span> &nbsp; PAYLINE &nbsp; <span>—</span></p>
+        </div>
 
-    <!-- =======================================================
-         VIEW 3: ABOUT — your team and your story.
-         ======================================================= -->
-    <section id="about" data-view hidden>
-      <h1>About us</h1>
-      <p>Tell the story of why your team started this company.</p>
-      <p>Use first names only, or no names at all — this site is public.</p>
-    </section>
-
+        <div class="bet-row slot-bet-row">
+          <span class="control-label">SPIN BET</span>
+          <div class="bet-options" role="group" aria-label="Choose slot bet">
+            <button type="button" class="bet-option slot-bet-option is-selected" data-slot-bet="10" aria-pressed="true">10</button>
+            <button type="button" class="bet-option slot-bet-option" data-slot-bet="20" aria-pressed="false">20</button>
+            <button type="button" class="bet-option slot-bet-option" data-slot-bet="30" aria-pressed="false">30</button>
+          </div>
+        </div>
+        <button type="button" class="button spin-button" id="spin-button"><span aria-hidden="true">⟳</span> SPIN</button>
+        <p class="game-message slot-message" id="slots-message" aria-live="polite">Three of a kind pays. Pearls pay extra.</p>
+        <p class="machine-note">THREE MATCH: 5× &nbsp; · &nbsp; PEARLS: 12×</p>
+      </section>
+    </div>
   </main>
 
-  <!-- Keep this footer. Your site must say it is a student project. -->
   <footer class="site-footer">
-    <p>Student prototype for BSAD 281 at St. Francis Xavier University. Not a real company — all data is fictional.</p>
+    <p>Student prototype for BSAD 281 at St. Francis Xavier University. Fictional games and credits only. No real money is used.</p>
+    <span>TAKE ONLY MEMORIES &nbsp;·&nbsp; LEAVE ONLY BUBBLES</span>
   </footer>
-
-  <!-- Scripts load in this order: data first, then the code that uses it. -->
-  <script src="data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
